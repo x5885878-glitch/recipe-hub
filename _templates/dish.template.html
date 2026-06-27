@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<!--
+  單菜頁模板 — 複製到 /dishes/{菜名英文-id}.html 後填入內容
+  必填區塊:食材(A) / 流程(C) / 標準化指標
+  選填區塊:前置(B) / 備註(D)
+  完成後記得到 index.html 的 CATALOG.dishes 加一筆
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{菜名} · 廚房作戰手冊</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-dish="{id}">
+
+<nav class="topbar">
+  <div class="wrap">
+    <a href="../index.html" class="brand"><span class="dot"></span>廚房作戰手冊</a>
+    <span class="spacer"></span>
+    <a href="../index.html" class="backlink">← 回統一入口</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="dish-header">
+    <div class="eyebrow">{分類 · 類型}</div>
+    <h1 class="dish-title">{菜名}</h1>
+    <p class="dish-sub">{一句話描述}</p>
+    <div class="spec-row">
+      <div class="spec"><span class="k">份量</span><span class="v">{N} 人</span></div>
+      <div class="spec"><span class="k">總時間</span><span class="v">{N} min</span></div>
+      <div class="spec"><span class="k">實作</span><span class="v">{N} min</span></div>
+      <div class="spec"><span class="k">難度</span><span class="v">{易/中/難}</span></div>
+    </div>
+    <div class="tags"><span class="tag">{標籤}</span></div>
+  </header>
+
+  <!-- A. 食材 -->
+  <section class="section">
+    <div class="section-h"><span class="num">A</span><h2>食材</h2></div>
+    <div class="ing-group">
+      <h3>{分組,如:主料 / 醃料 / 醬汁}</h3>
+      <ul class="ing-list">
+        <li><span class="name">{名稱}</span><span class="note">{處理方式}</span><span class="amt">{量}</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- B. 前置(選填) -->
+  <section class="section">
+    <div class="section-h"><span class="num">B</span><h2>前置(可提前備好)</h2></div>
+    <ol class="steps">
+      <li class="step"><div class="step-body">
+        <div class="step-title">{前置標題}</div>
+        <div class="step-detail">{說明}</div>
+        <div class="step-badges"><span class="badge time">⏱ {時間}</span></div>
+      </div></li>
+    </ol>
+  </section>
+
+  <!-- C. 流程 -->
+  <section class="section">
+    <div class="section-h"><span class="num">C</span><h2>流程</h2></div>
+    <ol class="steps">
+      <li class="step"><div class="step-body">
+        <div class="step-title">{步驟標題}</div>
+        <div class="step-detail">{操作說明}</div>
+        <div class="step-badges">
+          <span class="badge heat">🔥 {火候}</span>
+          <span class="badge temp">🌡 {溫度}</span>
+          <span class="badge time">⏱ {時間}</span>
+        </div>
+        <div class="step-key"><b>關鍵</b>:{成敗關鍵點}</div>
+      </div></li>
+    </ol>
+  </section>
+
+  <!-- 標準化指標(必填,精緻化重點) -->
+  <section class="section">
+    <div class="standard">
+      <h2>標準化指標</h2>
+      <dl>
+        <div><dt>熟度基準</dt><dd>{可量測 / 可判定的熟度}</dd></div>
+        <div><dt>味型 / 鹹度</dt><dd>{味型描述 + 鹹度基準}</dd></div>
+        <div><dt>成敗判定</dt><dd>{達標長什麼樣}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- D. 備註(選填) -->
+  <section class="section">
+    <div class="section-h"><span class="num">D</span><h2>備註 &amp; 變化</h2></div>
+    <ul class="note-list"><li>{備註}</li></ul>
+  </section>
+
+  <footer class="foot"><div>廚房作戰手冊 · 單菜頁 · <a href="../index.html">回統一入口</a></div></footer>
+</main>
+
+<button class="cookmode-btn" id="cookBtn">下廚模式</button>
+<script>
+(function(){
+  var key = 'done:' + (document.body.dataset.dish || location.pathname);
+  var done = {}; try { done = JSON.parse(localStorage.getItem(key) || '{}'); } catch(e){}
+  document.querySelectorAll('.step').forEach(function(el, i){
+    if (done[i]) el.classList.add('done');
+    el.addEventListener('click', function(){
+      el.classList.toggle('done'); done[i] = el.classList.contains('done');
+      try { localStorage.setItem(key, JSON.stringify(done)); } catch(e){}
+    });
+  });
+  var btn = document.getElementById('cookBtn');
+  btn.addEventListener('click', function(){
+    document.body.classList.toggle('cook');
+    btn.textContent = document.body.classList.contains('cook') ? '一般模式' : '下廚模式';
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>廚房作戰手冊 · 統一入口</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="dot"></span>廚房作戰手冊</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Standardized Kitchen Playbook</div>
+    <h1>廚房作戰手冊</h1>
+    <p>標準化、可複製的食譜系統。點一道菜看完整食譜與流程,或開一個「戰鬥日」看多菜的作戰時間軸。</p>
+  </header>
+
+  <div class="filterbar" id="filterbar"></div>
+
+  <div class="section-label">戰鬥日</div>
+  <div class="grid" id="battleGrid"></div>
+
+  <div class="section-label">單菜食譜</div>
+  <div class="grid" id="dishGrid"></div>
+
+  <footer class="foot">
+    <div>新增食譜後,把新項目加進本頁的 <code>CATALOG</code> 即可自動出現在這裡。</div>
+  </footer>
+</main>
+
+<script>
+/* =========================================================================
+   目錄清單 — 新增一道菜 / 一個戰鬥日,就在這裡加一筆
+   ========================================================================= */
+const CATALOG = {
+  dishes: [
+    {
+      id: "gongbao-chicken",
+      name: "宮保雞丁",
+      category: "川菜 · 熱炒",
+      time: 35, difficulty: "中",
+      tags: ["快炒", "下飯", "微辣"],
+      url: "dishes/gongbao-chicken.html"
+    },
+    {
+      id: "tomato-egg-soup",
+      name: "番茄蛋花湯",
+      category: "家常 · 湯品",
+      time: 20, difficulty: "易",
+      tags: ["湯品", "開胃", "可預煮"],
+      url: "dishes/tomato-egg-soup.html"
+    }
+  ],
+  battleDays: [
+    {
+      id: "2026-06-28",
+      name: "週末雙人晚餐",
+      date: "2026-06-28",
+      dishes: ["宮保雞丁", "番茄蛋花湯"],
+      url: "battle-days/2026-06-28.html"
+    }
+  ]
+};
+
+/* ---------- 渲染 ---------- */
+function dishCard(d){
+  return `<a class="card-link" href="${d.url}">
+    <div class="dish-card">
+      <div class="cat">${d.category}</div>
+      <div class="nm">${d.name}</div>
+      <div class="meta"><span class="mono">⏱ ${d.time} min</span><span>難度 ${d.difficulty}</span></div>
+      <div class="ct">${d.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+    </div></a>`;
+}
+function battleCard(b){
+  return `<a class="card-link" href="${b.url}">
+    <div class="battle-card">
+      <div class="bd-date">${b.date}</div>
+      <div class="bd-name">${b.name}</div>
+      <div class="bd-dishes">${b.dishes.join(" · ")}</div>
+      <div class="bd-foot">${b.dishes.length} 道菜 · 看時間軸 →</div>
+    </div></a>`;
+}
+
+const dishGrid = document.getElementById("dishGrid");
+const battleGrid = document.getElementById("battleGrid");
+battleGrid.innerHTML = CATALOG.battleDays.map(battleCard).join("");
+
+/* ---------- 分類篩選 ---------- */
+const cats = ["全部", ...new Set(CATALOG.dishes.map(d => d.category))];
+const fb = document.getElementById("filterbar");
+fb.innerHTML = cats.map((c,i)=>`<button class="chip${i===0?' active':''}" data-cat="${c}">${c}</button>`).join("");
+
+function renderDishes(cat){
+  const list = cat === "全部" ? CATALOG.dishes : CATALOG.dishes.filter(d => d.category === cat);
+  dishGrid.innerHTML = list.map(dishCard).join("");
+}
+renderDishes("全部");
+
+fb.addEventListener("click", e => {
+  const btn = e.target.closest(".chip");
+  if (!btn) return;
+  fb.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+  btn.classList.add("active");
+  renderDishes(btn.dataset.cat);
+});
+</script>
+</body>
+</html>

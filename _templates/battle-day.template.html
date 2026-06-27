@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<!--
+  戰鬥日模板 — 複製到 /battle-days/{日期或代號}.html
+  核心:每個 tl-item 都用 tl-ref 把步驟「對標」回某道菜的某幾個流程
+  每道菜給一個 d-xxx class + 顏色,時間軸用顏色區分餐點
+  完成後到 index.html 的 CATALOG.battleDays 加一筆
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{戰鬥日名稱} · 戰鬥日 · 廚房作戰手冊</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* 每道菜一個配色 */
+  .d-1 { --c: #DC5A1E; }
+  .d-2 { --c: #1C5763; }
+  .d-3 { --c: #4E6B52; }
+  .tl-item .tl-card { border-left-color: var(--c); }
+  .tl-item .tl-dot  { background: var(--c); }
+  .tl-item .tl-dish { color: var(--c); }
+</style>
+</head>
+<body data-dish="battle-{id}">
+
+<nav class="topbar">
+  <div class="wrap">
+    <a href="../index.html" class="brand"><span class="dot"></span>廚房作戰手冊</a>
+    <span class="spacer"></span>
+    <a href="../index.html" class="backlink">← 回統一入口</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="battle-head">
+    <div class="eyebrow">戰鬥日 · {N} 道菜 · {N} 人份</div>
+    <h1 class="dish-title">{戰鬥日名稱}</h1>
+    <p class="dish-sub">{一句話作戰策略}</p>
+    <div class="serve-bar">
+      <span class="lab">上菜時間</span>
+      <span class="serve-time">{HH:MM}</span>
+      <div class="dish-key">
+        <span class="dk"><span class="swatch" style="background:#DC5A1E"></span><a href="../dishes/{id1}.html">{菜1}</a></span>
+        <span class="dk"><span class="swatch" style="background:#1C5763"></span><a href="../dishes/{id2}.html">{菜2}</a></span>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-h"><span class="num">▦</span><h2>作戰時間軸</h2></div>
+    <div class="rail">
+
+      <!-- 一個時間點 = 一張卡。class d-1/d-2 決定顏色;tl-ref 必填對標 -->
+      <div class="tl-item d-1">
+        <div class="tl-time">{HH:MM}<small>T-{N}</small></div>
+        <span class="tl-dot"></span>
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-dish">{菜名}</span><span class="tl-phase">{備料/烹煮/收尾}</span></div>
+          <div class="tl-action">{這個時間點要做的事}</div>
+          <div class="tl-ref">對標:{菜名} → 流程 {N–N}</div>
+          <div class="step-badges"><span class="badge heat">🔥 {火候}</span><span class="badge time">⏱ {時間}</span></div>
+        </div>
+      </div>
+
+      <!-- 結尾上菜 -->
+      <div class="tl-item" style="--c:#4E6B52">
+        <div class="tl-time">{HH:MM}<small>T-0</small></div>
+        <span class="tl-dot"></span>
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-dish" style="color:#4E6B52">上菜</span></div>
+          <div class="tl-action">全部熱上桌 🍽</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-h"><span class="num">✓</span><h2>戰前檢查</h2></div>
+    <ul class="note-list"><li>{開火前要先備好的東西}</li></ul>
+  </section>
+
+  <footer class="foot"><div>廚房作戰手冊 · 戰鬥日 · <a href="../index.html">回統一入口</a></div></footer>
+</main>
+
+<button class="cookmode-btn" id="cookBtn">下廚模式</button>
+<script>
+(function(){
+  var key = 'done:' + (document.body.dataset.dish || location.pathname);
+  var done = {}; try { done = JSON.parse(localStorage.getItem(key) || '{}'); } catch(e){}
+  document.querySelectorAll('.tl-card').forEach(function(el, i){
+    if (done[i]) el.classList.add('done');
+    el.addEventListener('click', function(){
+      el.classList.toggle('done'); done[i] = el.classList.contains('done');
+      try { localStorage.setItem(key, JSON.stringify(done)); } catch(e){}
+    });
+  });
+  var btn = document.getElementById('cookBtn');
+  btn.addEventListener('click', function(){
+    document.body.classList.toggle('cook');
+    btn.textContent = document.body.classList.contains('cook') ? '一般模式' : '下廚模式';
+  });
+})();
+</script>
+</body>
+</html>

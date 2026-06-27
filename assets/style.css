@@ -1,0 +1,328 @@
+/* =========================================================================
+   廚房作戰手冊 — 共用設計系統
+   設計意圖:專業廚房 station card 風格。冷調不鏽鋼藍 + 爐火橙。
+   廚房優先:大字、高對比、大點擊區、數字用等寬字(像儀表讀數)、可列印。
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+:root {
+  /* 色票 */
+  --paper:    #F6F4EF;   /* 暖白底 */
+  --card:     #FFFFFF;
+  --ink:      #211C18;   /* 近黑(暖) */
+  --ink-soft: #6B635A;
+  --steel:    #123B44;   /* 深石油藍 — 結構、導覽、分類 */
+  --steel-2:  #1C5763;
+  --ember:    #DC5A1E;   /* 爐火橙 — 計時、火候、主要動作、關鍵點 */
+  --ember-bg: #FBE9DD;
+  --sage:     #4E6B52;   /* 冷盤 / 前置 */
+  --sage-bg:  #E6EDE4;
+  --line:     #E4DFD5;
+  --line-2:   #D2CBBE;
+
+  /* 字級(廚房:base 偏大) */
+  --fs-base: 18px;
+  --display: 'Noto Serif TC', serif;
+  --body:    'Noto Sans TC', system-ui, sans-serif;
+  --mono:    'JetBrains Mono', ui-monospace, monospace;
+
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(33,28,24,.04), 0 8px 24px rgba(33,28,24,.06);
+  --maxw: 880px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+/* ---------- 版面容器 ---------- */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+/* ---------- 頂部導覽 ---------- */
+.topbar {
+  background: var(--steel);
+  color: #fff;
+  position: sticky; top: 0; z-index: 50;
+}
+.topbar .wrap {
+  display: flex; align-items: center; gap: 14px;
+  min-height: 60px;
+}
+.topbar a { text-decoration: none; }
+.brand {
+  font-family: var(--display); font-weight: 700; font-size: 1.15rem;
+  letter-spacing: .02em; color: #fff; display: flex; align-items: center; gap: 9px;
+}
+.brand .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ember); flex: none; }
+.topbar .spacer { flex: 1; }
+.backlink {
+  font-size: .9rem; color: #cfe0e2; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 4px;
+}
+.backlink:hover { color: #fff; }
+
+/* ---------- 食譜頁頭 ---------- */
+.dish-header { padding: 30px 0 22px; border-bottom: 2px solid var(--ink); margin-bottom: 28px; }
+.eyebrow {
+  font-family: var(--mono); font-size: .8rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--steel-2);
+}
+.dish-title {
+  font-family: var(--display); font-weight: 900;
+  font-size: clamp(2.2rem, 7vw, 3.4rem); line-height: 1.05;
+  margin: 6px 0 2px; letter-spacing: .01em;
+}
+.dish-sub { color: var(--ink-soft); font-size: 1rem; margin-bottom: 16px; }
+
+/* 規格列(份量 / 時間 / 難度) */
+.spec-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.spec {
+  display: flex; flex-direction: column; gap: 1px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; padding: 8px 14px; min-width: 84px;
+}
+.spec .k { font-size: .72rem; color: var(--ink-soft); letter-spacing: .06em; }
+.spec .v { font-family: var(--mono); font-weight: 600; font-size: 1.05rem; color: var(--steel); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+.tag {
+  font-size: .82rem; padding: 3px 11px; border-radius: 999px;
+  background: var(--sage-bg); color: var(--sage); font-weight: 500;
+}
+
+/* ---------- 區塊標題 ---------- */
+.section { margin: 34px 0; }
+.section-h {
+  display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--line-2);
+}
+.section-h h2 {
+  font-family: var(--display); font-weight: 700; font-size: 1.5rem; margin: 0;
+}
+.section-h .num {
+  font-family: var(--mono); font-size: .85rem; font-weight: 700; color: var(--ember);
+}
+
+/* ---------- 食材 ---------- */
+.ing-group { margin-bottom: 18px; }
+.ing-group > h3 {
+  font-size: .95rem; font-weight: 700; color: var(--steel);
+  margin: 0 0 8px; letter-spacing: .03em;
+}
+.ing-list { list-style: none; margin: 0; padding: 0; }
+.ing-list li {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 9px 4px; border-bottom: 1px dashed var(--line);
+}
+.ing-list .name { flex: 1; }
+.ing-list .note { color: var(--ink-soft); font-size: .88rem; }
+.ing-list .amt {
+  font-family: var(--mono); font-weight: 600; color: var(--steel);
+  white-space: nowrap; font-size: .98rem;
+}
+
+/* ---------- 步驟 ---------- */
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.step {
+  position: relative; display: grid;
+  grid-template-columns: 44px 1fr; gap: 16px;
+  padding: 18px 16px 18px 14px; margin-bottom: 12px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  cursor: pointer; transition: opacity .15s, border-color .15s;
+}
+.step::before {
+  counter-increment: step; content: counter(step);
+  font-family: var(--mono); font-weight: 700; font-size: 1.25rem;
+  color: #fff; background: var(--steel);
+  width: 44px; height: 44px; border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+}
+.step.done { opacity: .42; }
+.step.done .step-body { text-decoration: line-through; text-decoration-color: var(--ink-soft); }
+.step.done::before { background: var(--sage); }
+.step-title { font-weight: 700; font-size: 1.12rem; margin-bottom: 3px; }
+.step-detail { color: var(--ink); }
+.step-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.badge {
+  font-family: var(--mono); font-size: .82rem; font-weight: 600;
+  padding: 3px 9px; border-radius: 7px; display: inline-flex; align-items: center; gap: 5px;
+}
+.badge.heat { background: var(--ember-bg); color: var(--ember); }
+.badge.time { background: #E7EEF0; color: var(--steel); }
+.badge.temp { background: #EFEAF7; color: #5B428E; }
+.step-key {
+  margin-top: 11px; padding: 9px 12px; border-left: 3px solid var(--ember);
+  background: var(--ember-bg); border-radius: 0 8px 8px 0;
+  font-size: .92rem; color: #8a3a14;
+}
+.step-key b { color: var(--ember); }
+
+/* ---------- 標準化指標(精緻化重點) ---------- */
+.standard {
+  background: var(--steel); color: #eaf1f2; border-radius: var(--radius);
+  padding: 20px 22px;
+}
+.standard h2 { color: #fff; font-family: var(--display); margin: 0 0 14px; font-size: 1.3rem; }
+.standard dl { margin: 0; display: grid; gap: 12px; }
+.standard dt {
+  font-family: var(--mono); font-size: .76rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ember); margin-bottom: 2px;
+}
+.standard dd { margin: 0; color: #dce6e7; }
+
+/* ---------- 一般卡片 / 提示 ---------- */
+.note-list { padding-left: 1.1em; }
+.note-list li { margin-bottom: 6px; }
+
+/* =========================================================================
+   統一入口 HUB
+   ========================================================================= */
+.hero { padding: 44px 0 26px; }
+.hero .eyebrow { margin-bottom: 8px; }
+.hero h1 {
+  font-family: var(--display); font-weight: 900;
+  font-size: clamp(2.4rem, 8vw, 4rem); line-height: 1.02; margin: 0 0 10px;
+}
+.hero p { color: var(--ink-soft); max-width: 52ch; font-size: 1.05rem; margin: 0; }
+
+.filterbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 26px; }
+.chip {
+  font-size: .9rem; padding: 7px 15px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line-2); background: var(--card); color: var(--ink-soft);
+  font-family: var(--body); transition: all .12s;
+}
+.chip:hover { border-color: var(--steel); color: var(--steel); }
+.chip.active { background: var(--steel); color: #fff; border-color: var(--steel); }
+
+.section-label {
+  font-family: var(--mono); font-size: .82rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--steel-2);
+  display: flex; align-items: center; gap: 10px; margin: 30px 0 14px;
+}
+.section-label::after { content: ""; flex: 1; height: 1px; background: var(--line-2); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+
+.card-link { text-decoration: none; color: inherit; display: block; }
+.dish-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 18px 16px; box-shadow: var(--shadow);
+  transition: transform .14s, box-shadow .14s, border-color .14s; height: 100%;
+}
+.card-link:hover .dish-card {
+  transform: translateY(-3px); border-color: var(--steel-2);
+  box-shadow: 0 10px 30px rgba(18,59,68,.14);
+}
+.dish-card .cat { font-family: var(--mono); font-size: .74rem; letter-spacing: .08em; color: var(--ember); font-weight: 600; }
+.dish-card .nm { font-family: var(--display); font-weight: 700; font-size: 1.5rem; margin: 4px 0 8px; line-height: 1.15; }
+.dish-card .meta { display: flex; gap: 12px; color: var(--ink-soft); font-size: .85rem; }
+.dish-card .meta .mono { font-family: var(--mono); }
+.dish-card .ct { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 11px; }
+.dish-card .ct .tag { font-size: .74rem; padding: 2px 8px; }
+
+/* 戰鬥日卡片 */
+.battle-card {
+  background: linear-gradient(135deg, var(--steel) 0%, #0c2c33 100%);
+  color: #eaf1f2; border-radius: var(--radius); padding: 20px;
+  box-shadow: var(--shadow); transition: transform .14s, box-shadow .14s; height: 100%;
+}
+.card-link:hover .battle-card { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(12,44,51,.3); }
+.battle-card .bd-date { font-family: var(--mono); font-size: .8rem; color: var(--ember); font-weight: 600; letter-spacing: .06em; }
+.battle-card .bd-name { font-family: var(--display); font-weight: 700; font-size: 1.45rem; margin: 5px 0 10px; color: #fff; }
+.battle-card .bd-dishes { font-size: .9rem; color: #b9cccd; }
+.battle-card .bd-foot { margin-top: 14px; font-family: var(--mono); font-size: .8rem; color: #9fd9c9; }
+
+/* =========================================================================
+   戰鬥日 — 時間軸(signature 元素)
+   ========================================================================= */
+.battle-head { padding: 30px 0 10px; }
+.serve-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 14px 18px; margin: 18px 0 6px;
+}
+.serve-bar .lab { font-size: .8rem; color: var(--ink-soft); }
+.serve-bar .serve-time { font-family: var(--mono); font-weight: 700; font-size: 1.6rem; color: var(--ember); }
+.serve-bar .dish-key { display: flex; flex-wrap: wrap; gap: 12px; margin-left: auto; }
+.dk { display: inline-flex; align-items: center; gap: 7px; font-size: .9rem; }
+.dk .swatch { width: 13px; height: 13px; border-radius: 4px; flex: none; }
+
+.rail { position: relative; margin: 26px 0; padding-left: 86px; }
+.rail::before {
+  content: ""; position: absolute; left: 78px; top: 6px; bottom: 6px;
+  width: 2px; background: var(--line-2);
+}
+.tl-item { position: relative; margin-bottom: 14px; }
+.tl-time {
+  position: absolute; left: -86px; top: 14px; width: 64px; text-align: right;
+  font-family: var(--mono); font-weight: 700; font-size: .95rem; color: var(--steel);
+}
+.tl-time small { display: block; font-size: .68rem; color: var(--ink-soft); font-weight: 400; }
+.tl-dot {
+  position: absolute; left: -12px; top: 18px; width: 14px; height: 14px;
+  border-radius: 50%; border: 3px solid var(--paper); z-index: 2;
+}
+.tl-card {
+  background: var(--card); border: 1px solid var(--line); border-left-width: 5px;
+  border-radius: 10px; padding: 13px 16px; box-shadow: var(--shadow);
+  cursor: pointer; transition: opacity .15s;
+}
+.tl-card.done { opacity: .42; }
+.tl-card.done .tl-action { text-decoration: line-through; }
+.tl-meta { display: flex; align-items: center; gap: 9px; margin-bottom: 3px; flex-wrap: wrap; }
+.tl-dish { font-size: .76rem; font-weight: 700; font-family: var(--mono); letter-spacing: .04em; }
+.tl-phase { font-size: .7rem; padding: 1px 7px; border-radius: 6px; background: #eee; color: #666; font-family: var(--mono); }
+.tl-action { font-weight: 700; font-size: 1.06rem; }
+.tl-ref { font-size: .84rem; color: var(--ink-soft); margin-top: 2px; }
+.tl-card .step-badges { margin-top: 8px; }
+
+/* ---------- 下廚模式(放大 + 收掉非必要) ---------- */
+.cookmode-btn {
+  position: fixed; right: 16px; bottom: 16px; z-index: 60;
+  background: var(--ember); color: #fff; border: none; border-radius: 999px;
+  padding: 13px 20px; font-family: var(--body); font-weight: 700; font-size: .95rem;
+  box-shadow: 0 6px 20px rgba(220,90,30,.4); cursor: pointer;
+}
+body.cook { --fs-base: 21px; }
+body.cook .dish-sub, body.cook .tags, body.cook .standard, body.cook .note-list { }
+body.cook .step-title { font-size: 1.3rem; }
+body.cook .tl-action { font-size: 1.25rem; }
+
+/* ---------- 頁尾 ---------- */
+.foot { border-top: 1px solid var(--line); margin-top: 50px; padding: 24px 0 60px; color: var(--ink-soft); font-size: .85rem; }
+.foot a { color: var(--steel); }
+
+/* ---------- 可用性:focus / reduced motion ---------- */
+:focus-visible { outline: 3px solid var(--ember); outline-offset: 2px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---------- 響應式 ---------- */
+@media (max-width: 560px) {
+  .rail { padding-left: 64px; }
+  .rail::before { left: 56px; }
+  .tl-time { left: -64px; width: 48px; }
+  .serve-bar .dish-key { margin-left: 0; width: 100%; }
+}
+
+/* ---------- 列印(印成 station card) ---------- */
+@media print {
+  .topbar, .cookmode-btn, .filterbar { display: none !important; }
+  body { background: #fff; font-size: 12pt; }
+  .step, .tl-card, .dish-card { box-shadow: none; break-inside: avoid; }
+  .standard { background: #fff; color: #000; border: 1.5px solid #000; }
+  .standard h2, .standard dd { color: #000; }
+}

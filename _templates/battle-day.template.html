@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <!--
-  戰鬥日模板(手風琴版)— 複製到 /battle-days/{日期或代號}.html
+  餐期模板(手風琴版)— 複製到 /battle-days/{日期或代號}.html
   核心:時間軸每張卡用 tl-ref 把步驟「對標」回某道菜的某幾個流程
   每道菜給一個 d-1/d-2 class + 顏色;完成後到 index.html 的 CATALOG.battleDays 加一筆
 -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{戰鬥日名稱} · 戰鬥日 · 廚房作戰手冊</title>
+<title>{餐期名稱} · 餐期 · Xi++御膳廚</title>
 <link rel="stylesheet" href="../assets/style.css">
 <style>
   .d-1 { --c: #DC5A1E; }
@@ -23,7 +23,7 @@
 
 <nav class="topbar">
   <div class="wrap">
-    <a href="../index.html" class="brand"><span class="dot"></span>廚房作戰手冊</a>
+    <a href="../index.html" class="brand"><span class="dot"></span>Xi++御膳廚</a>
     <span class="spacer"></span>
     <a href="../index.html" class="backlink">← 回統一入口</a>
   </div>
@@ -31,8 +31,8 @@
 
 <main class="wrap">
   <header class="battle-head">
-    <div class="eyebrow">戰鬥日 · {N} 道菜 · {N} 人份</div>
-    <h1 class="dish-title">{戰鬥日名稱}</h1>
+    <div class="eyebrow">餐期 · {N} 道菜 · {N} 人份</div>
+    <h1 class="dish-title">{餐期名稱}</h1>
     <p class="dish-sub">{一句話作戰策略}</p>
     <div class="serve-bar">
       <span class="lab">上菜時間</span>
@@ -49,7 +49,7 @@
     <button class="chip-btn" id="collapseAll">收合全部</button>
   </div>
 
-  <details class="acc" open>
+  <details class="acc">
     <summary><span class="acc-badge">▦</span><span class="acc-title">作戰時間軸</span><span class="acc-count"></span><span class="acc-chev">▾</span></summary>
     <div class="acc-body">
       <div class="rail">
@@ -79,12 +79,12 @@
     </div>
   </details>
 
-  <details class="acc" open>
+  <details class="acc">
     <summary><span class="acc-badge">✓</span><span class="acc-title">戰前檢查</span><span class="acc-chev">▾</span></summary>
     <div class="acc-body"><ul class="note-list"><li>{開火前要先備好的東西}</li></ul></div>
   </details>
 
-  <footer class="foot"><div>廚房作戰手冊 · 戰鬥日 · <a href="../index.html">回統一入口</a></div></footer>
+  <footer class="foot"><div>Xi++御膳廚 · 餐期 · <a href="../index.html">回統一入口</a></div></footer>
 </main>
 
 <button class="cookmode-btn" id="cookBtn">下廚模式</button>

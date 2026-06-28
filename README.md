@@ -1,7 +1,7 @@
-# 廚房作戰手冊 · Kitchen Playbook
+# Xi++御膳廚 · Kitchen Playbook
 
 標準化、可複製的個人食譜系統。每道菜是一個獨立 HTML 頁(離線可看、可列印),
-統一入口把所有菜與「戰鬥日」串成一個目錄。專為在廚房用平板邊看邊做菜設計。
+統一入口把所有菜與「餐期」串成一個目錄。專為在廚房用平板邊看邊做菜設計。
 
 ## 結構
 
@@ -13,7 +13,7 @@ recipe-hub/
 ├── dishes/                 ← 單菜頁(每道菜一個檔)
 │   ├── gongbao-chicken.html
 │   └── tomato-egg-soup.html
-├── battle-days/            ← 戰鬥日(多菜時間軸)
+├── battle-days/            ← 餐期(多菜時間軸)
 │   └── 2026-06-28.html
 ├── _templates/             ← 空白模板,新增時複製用
 │   ├── dish.template.html
@@ -23,7 +23,7 @@ recipe-hub/
 
 兩種瀏覽路徑:
 - 統一入口 → 某道菜 → 完整食譜 + 流程
-- 統一入口 → 某個戰鬥日 → 時間軸,每個步驟對標到具體餐點
+- 統一入口 → 某個餐期 → 時間軸,每個步驟對標到具體餐點
 
 ## 新增一道菜
 
@@ -34,7 +34,7 @@ recipe-hub/
    { id:"...", name:"...", category:"...", time:30, difficulty:"中", tags:["..."], url:"dishes/英文-id.html" }
    ```
 
-## 新增一個戰鬥日
+## 新增一個餐期
 
 1. 複製 `_templates/battle-day.template.html` 到 `battle-days/{日期}.html`
 2. 每個時間點一張 `tl-item` 卡,用 `tl-ref` 把它**對標**回某道菜的流程第幾步。
@@ -55,7 +55,7 @@ recipe-hub/
 cd recipe-hub
 git init
 git add .
-git commit -m "init: 廚房作戰手冊"
+git commit -m "init: Xi++御膳廚"
 git branch -M main
 git remote add origin https://github.com/<你的帳號>/<repo名>.git
 git push -u origin main

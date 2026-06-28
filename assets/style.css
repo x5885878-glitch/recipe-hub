@@ -382,3 +382,6 @@ details.acc .step { box-shadow: none; }
   details.acc { box-shadow: none; break-inside: avoid; }
   details.acc > summary { background: #f0ede7 !important; }
 }
+
+/* 比例 / 規格徽章(用在流程步驟內) */
+.badge.ratio { background: var(--sage-bg); color: var(--sage); }

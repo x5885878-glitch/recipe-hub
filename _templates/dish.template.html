@@ -69,31 +69,35 @@
   </details>
 
   <!-- C. 流程 -->
+  <!-- 原則:比例、火候、關鍵手法都寫在這裡(step-detail / step-badges / step-key),
+       不要只放到最下面的「標準化指標」。 -->
   <details class="acc">
     <summary><span class="acc-badge">C</span><span class="acc-title">流程</span><span class="acc-count"></span><span class="acc-chev">▾</span></summary>
     <div class="acc-body">
       <ol class="steps">
         <li class="step"><div class="step-body">
           <div class="step-title">{步驟標題}</div>
-          <div class="step-detail">{操作說明}</div>
+          <div class="step-detail">{操作說明,含當步需要的份量/比例}</div>
           <div class="step-badges">
             <span class="badge heat">🔥 {火候}</span>
             <span class="badge temp">🌡 {溫度}</span>
             <span class="badge time">⏱ {時間}</span>
+            <span class="badge ratio">{比例,如 A:B = 100:150}</span>
           </div>
-          <div class="step-key"><b>關鍵</b>:{成敗關鍵點}</div>
+          <div class="step-key"><b>關鍵</b>:{成敗關鍵手法}</div>
         </div></li>
       </ol>
     </div>
   </details>
 
-  <!-- 標準化指標(必填,精緻化重點) -->
+  <!-- 標準化指標(必填,精緻化重點)
+       只放「判定基準」與「目標成品樣貌」;比例與操作手法請寫進上面的「流程」。 -->
   <details class="acc acc--key">
     <summary><span class="acc-badge">★</span><span class="acc-title">標準化指標</span><span class="acc-chev">▾</span></summary>
     <div class="acc-body">
       <dl class="std-dl">
         <div><dt>熟度基準</dt><dd>{可量測 / 可判定的熟度}</dd></div>
-        <div><dt>味型 / 鹹度</dt><dd>{味型描述 + 鹹度基準}</dd></div>
+        <div><dt>味型 / 湯相</dt><dd>{目標味型與成品樣貌}</dd></div>
         <div><dt>成敗判定</dt><dd>{達標長什麼樣}</dd></div>
       </dl>
     </div>

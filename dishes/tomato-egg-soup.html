@@ -30,56 +30,65 @@
     <div class="tags"><span class="tag">湯品</span><span class="tag">開胃</span><span class="tag">可預煮</span></div>
   </header>
 
-  <section class="section">
-    <div class="section-h"><span class="num">A</span><h2>食材</h2></div>
-    <div class="ing-group">
-      <ul class="ing-list">
-        <li><span class="name">牛番茄</span><span class="note">切瓣</span><span class="amt">2 顆</span></li>
-        <li><span class="name">雞蛋</span><span class="note">打散</span><span class="amt">2 顆</span></li>
-        <li><span class="name">水 / 高湯</span><span class="amt">600 ml</span></li>
-        <li><span class="name">太白粉水</span><span class="note">勾薄芡用</span><span class="amt">1 tbsp</span></li>
-        <li><span class="name">蔥花</span><span class="amt">適量</span></li>
-        <li><span class="name">鹽 / 糖 / 白胡椒</span><span class="amt">適量</span></li>
-      </ul>
+  <div class="acc-controls">
+    <button class="chip-btn" id="expandAll">展開全部</button>
+    <button class="chip-btn" id="collapseAll">收合全部</button>
+  </div>
+
+  <details class="acc" open>
+    <summary><span class="acc-badge">A</span><span class="acc-title">食材</span><span class="acc-count"></span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <div class="ing-group">
+        <ul class="ing-list">
+          <li><span class="name">牛番茄</span><span class="note">切瓣</span><span class="amt">2 顆</span></li>
+          <li><span class="name">雞蛋</span><span class="note">打散</span><span class="amt">2 顆</span></li>
+          <li><span class="name">水 / 高湯</span><span class="amt">600 ml</span></li>
+          <li><span class="name">太白粉水</span><span class="note">勾薄芡用</span><span class="amt">1 tbsp</span></li>
+          <li><span class="name">蔥花</span><span class="amt">適量</span></li>
+          <li><span class="name">鹽 / 糖 / 白胡椒</span><span class="amt">適量</span></li>
+        </ul>
+      </div>
     </div>
-  </section>
+  </details>
 
-  <section class="section">
-    <div class="section-h"><span class="num">B</span><h2>流程</h2></div>
-    <ol class="steps">
-      <li class="step"><div class="step-body">
-        <div class="step-title">炒香番茄</div>
-        <div class="step-detail">少油下番茄,中火炒到出沙、出紅油。</div>
-        <div class="step-badges"><span class="badge heat">🔥 中火</span><span class="badge time">⏱ 3 min</span></div>
-        <div class="step-key"><b>關鍵</b>:番茄一定要先炒出沙,湯頭才濃、酸甜才出得來。</div>
-      </div></li>
-      <li class="step"><div class="step-body">
-        <div class="step-title">加水煮滾</div>
-        <div class="step-detail">加水/高湯煮滾,加鹽、少許糖、白胡椒調味。轉小火可保溫等主菜。</div>
-        <div class="step-badges"><span class="badge time">⏱ 5 min</span></div>
-      </div></li>
-      <li class="step"><div class="step-body">
-        <div class="step-title">勾薄芡 + 下蛋花</div>
-        <div class="step-detail">湯滾下太白粉水勾薄芡,關小火,蛋液<b>繞圈細流淋入</b>,3 秒後再輕推。</div>
-        <div class="step-badges"><span class="badge heat">🔥 小火</span></div>
-        <div class="step-key"><b>關鍵</b>:勾芡後再下蛋、淋完先別攪——蛋花才會細絮漂亮。</div>
-      </div></li>
-      <li class="step"><div class="step-body">
-        <div class="step-title">起鍋</div>
-        <div class="step-detail">撒蔥花、滴幾滴香油,完成。</div>
-      </div></li>
-    </ol>
-  </section>
+  <details class="acc" open>
+    <summary><span class="acc-badge">B</span><span class="acc-title">流程</span><span class="acc-count"></span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <ol class="steps">
+        <li class="step"><div class="step-body">
+          <div class="step-title">炒香番茄</div>
+          <div class="step-detail">少油下番茄,中火炒到出沙、出紅油。</div>
+          <div class="step-badges"><span class="badge heat">🔥 中火</span><span class="badge time">⏱ 3 min</span></div>
+          <div class="step-key"><b>關鍵</b>:番茄一定要先炒出沙,湯頭才濃、酸甜才出得來。</div>
+        </div></li>
+        <li class="step"><div class="step-body">
+          <div class="step-title">加水煮滾</div>
+          <div class="step-detail">加水/高湯煮滾,加鹽、少許糖、白胡椒調味。轉小火可保溫等主菜。</div>
+          <div class="step-badges"><span class="badge time">⏱ 5 min</span></div>
+        </div></li>
+        <li class="step"><div class="step-body">
+          <div class="step-title">勾薄芡 + 下蛋花</div>
+          <div class="step-detail">湯滾下太白粉水勾薄芡,關小火,蛋液<b>繞圈細流淋入</b>,3 秒後再輕推。</div>
+          <div class="step-badges"><span class="badge heat">🔥 小火</span></div>
+          <div class="step-key"><b>關鍵</b>:勾芡後再下蛋、淋完先別攪——蛋花才會細絮漂亮。</div>
+        </div></li>
+        <li class="step"><div class="step-body">
+          <div class="step-title">起鍋</div>
+          <div class="step-detail">撒蔥花、滴幾滴香油,完成。</div>
+        </div></li>
+      </ol>
+    </div>
+  </details>
 
-  <section class="section">
-    <div class="standard">
-      <h2>標準化指標</h2>
-      <dl>
+  <details class="acc acc--key" open>
+    <summary><span class="acc-badge">★</span><span class="acc-title">標準化指標</span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <dl class="std-dl">
         <div><dt>湯色 / 口感</dt><dd>橙紅清亮、微稠不糊;蛋成細絮懸浮,不結成大塊。</dd></div>
         <div><dt>味型</dt><dd>酸甜帶鹹、尾韻有番茄香,不死鹹。</dd></div>
       </dl>
     </div>
-  </section>
+  </details>
 
   <footer class="foot">
     <div>廚房作戰手冊 · 單菜頁 · <a href="../index.html">回統一入口</a></div>
@@ -89,22 +98,44 @@
 <button class="cookmode-btn" id="cookBtn">下廚模式</button>
 <script>
 (function(){
-  var key = 'done:' + (document.body.dataset.dish || location.pathname);
-  var done = {};
-  try { done = JSON.parse(localStorage.getItem(key) || '{}'); } catch(e){}
-  document.querySelectorAll('.step').forEach(function(el, i){
-    if (done[i]) el.classList.add('done');
-    el.addEventListener('click', function(){
-      el.classList.toggle('done');
-      done[i] = el.classList.contains('done');
-      try { localStorage.setItem(key, JSON.stringify(done)); } catch(e){}
+  var page = document.body.dataset.dish || location.pathname;
+  var accs = Array.prototype.slice.call(document.querySelectorAll('details.acc'));
+  var akey = 'acc:' + page, astate = {};
+  try { astate = JSON.parse(localStorage.getItem(akey) || '{}'); } catch(e){}
+  accs.forEach(function(d, i){
+    if (astate.hasOwnProperty(i)) d.open = astate[i];
+    var cnt = d.querySelector('.acc-count');
+    if (cnt) {
+      var steps = d.querySelectorAll('.step'), ings = d.querySelectorAll('.ing-list li');
+      if (steps.length) cnt.textContent = steps.length + ' 步';
+      else if (ings.length) cnt.textContent = ings.length + ' 項';
+    }
+    d.addEventListener('toggle', function(){
+      astate[i] = d.open;
+      try { localStorage.setItem(akey, JSON.stringify(astate)); } catch(e){}
     });
   });
-  var btn = document.getElementById('cookBtn');
-  btn.addEventListener('click', function(){
-    document.body.classList.toggle('cook');
-    btn.textContent = document.body.classList.contains('cook') ? '一般模式' : '下廚模式';
+  function setAll(open){ accs.forEach(function(d,i){ d.open=open; astate[i]=open; }); try{localStorage.setItem(akey,JSON.stringify(astate));}catch(e){} }
+  var bE=document.getElementById('expandAll'), bC=document.getElementById('collapseAll');
+  if(bE) bE.addEventListener('click',function(){setAll(true);});
+  if(bC) bC.addEventListener('click',function(){setAll(false);});
+
+  var dkey='done:'+page, done={};
+  try{done=JSON.parse(localStorage.getItem(dkey)||'{}');}catch(e){}
+  document.querySelectorAll('.step').forEach(function(el,i){
+    if(done[i]) el.classList.add('done');
+    el.addEventListener('click',function(){
+      el.classList.toggle('done'); done[i]=el.classList.contains('done');
+      try{localStorage.setItem(dkey,JSON.stringify(done));}catch(e){}
+    });
   });
+  var btn=document.getElementById('cookBtn');
+  if(btn) btn.addEventListener('click',function(){
+    document.body.classList.toggle('cook');
+    btn.textContent=document.body.classList.contains('cook')?'一般模式':'下廚模式';
+  });
+  window.addEventListener('beforeprint',function(){accs.forEach(function(d){d.dataset.po=d.open?'1':'0';d.open=true;});});
+  window.addEventListener('afterprint',function(){accs.forEach(function(d){d.open=d.dataset.po==='1';});});
 })();
 </script>
 </body>

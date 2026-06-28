@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <!--
-  單菜頁模板 — 複製到 /dishes/{菜名英文-id}.html 後填入內容
-  必填區塊:食材(A) / 流程(C) / 標準化指標
-  選填區塊:前置(B) / 備註(D)
-  完成後記得到 index.html 的 CATALOG.dishes 加一筆
+  單菜頁模板(手風琴版)— 複製到 /dishes/{菜名英文-id}.html 後填內容
+  每個 details.acc = 一個可收摺區塊;.acc-count 留空,JS 會自動算「N 項 / N 步」
+  必填:食材 / 流程 / 標準化指標   選填:前置 / 備註
+  完成後到 index.html 的 CATALOG.dishes 加一筆
 -->
 <head>
 <meta charset="UTF-8">
@@ -36,63 +36,74 @@
     <div class="tags"><span class="tag">{標籤}</span></div>
   </header>
 
+  <div class="acc-controls">
+    <button class="chip-btn" id="expandAll">展開全部</button>
+    <button class="chip-btn" id="collapseAll">收合全部</button>
+  </div>
+
   <!-- A. 食材 -->
-  <section class="section">
-    <div class="section-h"><span class="num">A</span><h2>食材</h2></div>
-    <div class="ing-group">
-      <h3>{分組,如:主料 / 醃料 / 醬汁}</h3>
-      <ul class="ing-list">
-        <li><span class="name">{名稱}</span><span class="note">{處理方式}</span><span class="amt">{量}</span></li>
-      </ul>
+  <details class="acc" open>
+    <summary><span class="acc-badge">A</span><span class="acc-title">食材</span><span class="acc-count"></span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <div class="ing-group">
+        <h3>{分組,如:主料 / 醃料 / 醬汁}</h3>
+        <ul class="ing-list">
+          <li><span class="name">{名稱}</span><span class="note">{處理方式}</span><span class="amt">{量}</span></li>
+        </ul>
+      </div>
     </div>
-  </section>
+  </details>
 
   <!-- B. 前置(選填) -->
-  <section class="section">
-    <div class="section-h"><span class="num">B</span><h2>前置(可提前備好)</h2></div>
-    <ol class="steps">
-      <li class="step"><div class="step-body">
-        <div class="step-title">{前置標題}</div>
-        <div class="step-detail">{說明}</div>
-        <div class="step-badges"><span class="badge time">⏱ {時間}</span></div>
-      </div></li>
-    </ol>
-  </section>
+  <details class="acc" open>
+    <summary><span class="acc-badge">B</span><span class="acc-title">前置</span><span class="acc-count"></span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <ol class="steps">
+        <li class="step"><div class="step-body">
+          <div class="step-title">{前置標題}</div>
+          <div class="step-detail">{說明}</div>
+          <div class="step-badges"><span class="badge time">⏱ {時間}</span></div>
+        </div></li>
+      </ol>
+    </div>
+  </details>
 
   <!-- C. 流程 -->
-  <section class="section">
-    <div class="section-h"><span class="num">C</span><h2>流程</h2></div>
-    <ol class="steps">
-      <li class="step"><div class="step-body">
-        <div class="step-title">{步驟標題}</div>
-        <div class="step-detail">{操作說明}</div>
-        <div class="step-badges">
-          <span class="badge heat">🔥 {火候}</span>
-          <span class="badge temp">🌡 {溫度}</span>
-          <span class="badge time">⏱ {時間}</span>
-        </div>
-        <div class="step-key"><b>關鍵</b>:{成敗關鍵點}</div>
-      </div></li>
-    </ol>
-  </section>
+  <details class="acc" open>
+    <summary><span class="acc-badge">C</span><span class="acc-title">流程</span><span class="acc-count"></span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <ol class="steps">
+        <li class="step"><div class="step-body">
+          <div class="step-title">{步驟標題}</div>
+          <div class="step-detail">{操作說明}</div>
+          <div class="step-badges">
+            <span class="badge heat">🔥 {火候}</span>
+            <span class="badge temp">🌡 {溫度}</span>
+            <span class="badge time">⏱ {時間}</span>
+          </div>
+          <div class="step-key"><b>關鍵</b>:{成敗關鍵點}</div>
+        </div></li>
+      </ol>
+    </div>
+  </details>
 
   <!-- 標準化指標(必填,精緻化重點) -->
-  <section class="section">
-    <div class="standard">
-      <h2>標準化指標</h2>
-      <dl>
+  <details class="acc acc--key" open>
+    <summary><span class="acc-badge">★</span><span class="acc-title">標準化指標</span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <dl class="std-dl">
         <div><dt>熟度基準</dt><dd>{可量測 / 可判定的熟度}</dd></div>
         <div><dt>味型 / 鹹度</dt><dd>{味型描述 + 鹹度基準}</dd></div>
         <div><dt>成敗判定</dt><dd>{達標長什麼樣}</dd></div>
       </dl>
     </div>
-  </section>
+  </details>
 
   <!-- D. 備註(選填) -->
-  <section class="section">
-    <div class="section-h"><span class="num">D</span><h2>備註 &amp; 變化</h2></div>
-    <ul class="note-list"><li>{備註}</li></ul>
-  </section>
+  <details class="acc">
+    <summary><span class="acc-badge">D</span><span class="acc-title">備註 &amp; 變化</span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body"><ul class="note-list"><li>{備註}</li></ul></div>
+  </details>
 
   <footer class="foot"><div>廚房作戰手冊 · 單菜頁 · <a href="../index.html">回統一入口</a></div></footer>
 </main>
@@ -100,20 +111,44 @@
 <button class="cookmode-btn" id="cookBtn">下廚模式</button>
 <script>
 (function(){
-  var key = 'done:' + (document.body.dataset.dish || location.pathname);
-  var done = {}; try { done = JSON.parse(localStorage.getItem(key) || '{}'); } catch(e){}
-  document.querySelectorAll('.step').forEach(function(el, i){
-    if (done[i]) el.classList.add('done');
-    el.addEventListener('click', function(){
-      el.classList.toggle('done'); done[i] = el.classList.contains('done');
-      try { localStorage.setItem(key, JSON.stringify(done)); } catch(e){}
+  var page = document.body.dataset.dish || location.pathname;
+  var accs = Array.prototype.slice.call(document.querySelectorAll('details.acc'));
+  var akey = 'acc:' + page, astate = {};
+  try { astate = JSON.parse(localStorage.getItem(akey) || '{}'); } catch(e){}
+  accs.forEach(function(d, i){
+    if (astate.hasOwnProperty(i)) d.open = astate[i];
+    var cnt = d.querySelector('.acc-count');
+    if (cnt) {
+      var steps = d.querySelectorAll('.step'), ings = d.querySelectorAll('.ing-list li');
+      if (steps.length) cnt.textContent = steps.length + ' 步';
+      else if (ings.length) cnt.textContent = ings.length + ' 項';
+    }
+    d.addEventListener('toggle', function(){
+      astate[i] = d.open;
+      try { localStorage.setItem(akey, JSON.stringify(astate)); } catch(e){}
     });
   });
-  var btn = document.getElementById('cookBtn');
-  btn.addEventListener('click', function(){
-    document.body.classList.toggle('cook');
-    btn.textContent = document.body.classList.contains('cook') ? '一般模式' : '下廚模式';
+  function setAll(open){ accs.forEach(function(d,i){ d.open=open; astate[i]=open; }); try{localStorage.setItem(akey,JSON.stringify(astate));}catch(e){} }
+  var bE=document.getElementById('expandAll'), bC=document.getElementById('collapseAll');
+  if(bE) bE.addEventListener('click',function(){setAll(true);});
+  if(bC) bC.addEventListener('click',function(){setAll(false);});
+
+  var dkey='done:'+page, done={};
+  try{done=JSON.parse(localStorage.getItem(dkey)||'{}');}catch(e){}
+  document.querySelectorAll('.step').forEach(function(el,i){
+    if(done[i]) el.classList.add('done');
+    el.addEventListener('click',function(){
+      el.classList.toggle('done'); done[i]=el.classList.contains('done');
+      try{localStorage.setItem(dkey,JSON.stringify(done));}catch(e){}
+    });
   });
+  var btn=document.getElementById('cookBtn');
+  if(btn) btn.addEventListener('click',function(){
+    document.body.classList.toggle('cook');
+    btn.textContent=document.body.classList.contains('cook')?'一般模式':'下廚模式';
+  });
+  window.addEventListener('beforeprint',function(){accs.forEach(function(d){d.dataset.po=d.open?'1':'0';d.open=true;});});
+  window.addEventListener('afterprint',function(){accs.forEach(function(d){d.open=d.dataset.po==='1';});});
 })();
 </script>
 </body>

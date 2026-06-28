@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <!--
-  戰鬥日模板 — 複製到 /battle-days/{日期或代號}.html
-  核心:每個 tl-item 都用 tl-ref 把步驟「對標」回某道菜的某幾個流程
-  每道菜給一個 d-xxx class + 顏色,時間軸用顏色區分餐點
-  完成後到 index.html 的 CATALOG.battleDays 加一筆
+  戰鬥日模板(手風琴版)— 複製到 /battle-days/{日期或代號}.html
+  核心:時間軸每張卡用 tl-ref 把步驟「對標」回某道菜的某幾個流程
+  每道菜給一個 d-1/d-2 class + 顏色;完成後到 index.html 的 CATALOG.battleDays 加一筆
 -->
 <head>
 <meta charset="UTF-8">
@@ -12,7 +11,6 @@
 <title>{戰鬥日名稱} · 戰鬥日 · 廚房作戰手冊</title>
 <link rel="stylesheet" href="../assets/style.css">
 <style>
-  /* 每道菜一個配色 */
   .d-1 { --c: #DC5A1E; }
   .d-2 { --c: #1C5763; }
   .d-3 { --c: #4E6B52; }
@@ -46,39 +44,45 @@
     </div>
   </header>
 
-  <section class="section">
-    <div class="section-h"><span class="num">▦</span><h2>作戰時間軸</h2></div>
-    <div class="rail">
+  <div class="acc-controls">
+    <button class="chip-btn" id="expandAll">展開全部</button>
+    <button class="chip-btn" id="collapseAll">收合全部</button>
+  </div>
 
-      <!-- 一個時間點 = 一張卡。class d-1/d-2 決定顏色;tl-ref 必填對標 -->
-      <div class="tl-item d-1">
-        <div class="tl-time">{HH:MM}<small>T-{N}</small></div>
-        <span class="tl-dot"></span>
-        <div class="tl-card">
-          <div class="tl-meta"><span class="tl-dish">{菜名}</span><span class="tl-phase">{備料/烹煮/收尾}</span></div>
-          <div class="tl-action">{這個時間點要做的事}</div>
-          <div class="tl-ref">對標:{菜名} → 流程 {N–N}</div>
-          <div class="step-badges"><span class="badge heat">🔥 {火候}</span><span class="badge time">⏱ {時間}</span></div>
+  <details class="acc" open>
+    <summary><span class="acc-badge">▦</span><span class="acc-title">作戰時間軸</span><span class="acc-count"></span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <div class="rail">
+
+        <!-- 一個時間點 = 一張卡。class d-1/d-2 決定顏色;tl-ref 必填對標 -->
+        <div class="tl-item d-1">
+          <div class="tl-time">{HH:MM}<small>T-{N}</small></div>
+          <span class="tl-dot"></span>
+          <div class="tl-card">
+            <div class="tl-meta"><span class="tl-dish">{菜名}</span><span class="tl-phase">{備料/烹煮/收尾}</span></div>
+            <div class="tl-action">{這個時間點要做的事}</div>
+            <div class="tl-ref">對標:{菜名} → 流程 {N–N}</div>
+            <div class="step-badges"><span class="badge heat">🔥 {火候}</span><span class="badge time">⏱ {時間}</span></div>
+          </div>
         </div>
-      </div>
 
-      <!-- 結尾上菜 -->
-      <div class="tl-item" style="--c:#4E6B52">
-        <div class="tl-time">{HH:MM}<small>T-0</small></div>
-        <span class="tl-dot"></span>
-        <div class="tl-card">
-          <div class="tl-meta"><span class="tl-dish" style="color:#4E6B52">上菜</span></div>
-          <div class="tl-action">全部熱上桌 🍽</div>
+        <div class="tl-item" style="--c:#4E6B52">
+          <div class="tl-time">{HH:MM}<small>T-0</small></div>
+          <span class="tl-dot"></span>
+          <div class="tl-card">
+            <div class="tl-meta"><span class="tl-dish" style="color:#4E6B52">上菜</span></div>
+            <div class="tl-action">全部熱上桌 🍽</div>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
-  </section>
+  </details>
 
-  <section class="section">
-    <div class="section-h"><span class="num">✓</span><h2>戰前檢查</h2></div>
-    <ul class="note-list"><li>{開火前要先備好的東西}</li></ul>
-  </section>
+  <details class="acc" open>
+    <summary><span class="acc-badge">✓</span><span class="acc-title">戰前檢查</span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body"><ul class="note-list"><li>{開火前要先備好的東西}</li></ul></div>
+  </details>
 
   <footer class="foot"><div>廚房作戰手冊 · 戰鬥日 · <a href="../index.html">回統一入口</a></div></footer>
 </main>
@@ -86,20 +90,31 @@
 <button class="cookmode-btn" id="cookBtn">下廚模式</button>
 <script>
 (function(){
-  var key = 'done:' + (document.body.dataset.dish || location.pathname);
-  var done = {}; try { done = JSON.parse(localStorage.getItem(key) || '{}'); } catch(e){}
-  document.querySelectorAll('.tl-card').forEach(function(el, i){
-    if (done[i]) el.classList.add('done');
-    el.addEventListener('click', function(){
-      el.classList.toggle('done'); done[i] = el.classList.contains('done');
-      try { localStorage.setItem(key, JSON.stringify(done)); } catch(e){}
-    });
+  var page = document.body.dataset.dish || location.pathname;
+  var accs = Array.prototype.slice.call(document.querySelectorAll('details.acc'));
+  var akey = 'acc:' + page, astate = {};
+  try { astate = JSON.parse(localStorage.getItem(akey) || '{}'); } catch(e){}
+  accs.forEach(function(d, i){
+    if (astate.hasOwnProperty(i)) d.open = astate[i];
+    var cnt = d.querySelector('.acc-count');
+    if (cnt) { var cards = d.querySelectorAll('.tl-card'); if (cards.length) cnt.textContent = cards.length + ' 段'; }
+    d.addEventListener('toggle', function(){ astate[i]=d.open; try{localStorage.setItem(akey,JSON.stringify(astate));}catch(e){} });
   });
-  var btn = document.getElementById('cookBtn');
-  btn.addEventListener('click', function(){
-    document.body.classList.toggle('cook');
-    btn.textContent = document.body.classList.contains('cook') ? '一般模式' : '下廚模式';
+  function setAll(open){ accs.forEach(function(d,i){ d.open=open; astate[i]=open; }); try{localStorage.setItem(akey,JSON.stringify(astate));}catch(e){} }
+  var bE=document.getElementById('expandAll'), bC=document.getElementById('collapseAll');
+  if(bE) bE.addEventListener('click',function(){setAll(true);});
+  if(bC) bC.addEventListener('click',function(){setAll(false);});
+
+  var dkey='done:'+page, done={};
+  try{done=JSON.parse(localStorage.getItem(dkey)||'{}');}catch(e){}
+  document.querySelectorAll('.tl-card').forEach(function(el,i){
+    if(done[i]) el.classList.add('done');
+    el.addEventListener('click',function(){ el.classList.toggle('done'); done[i]=el.classList.contains('done'); try{localStorage.setItem(dkey,JSON.stringify(done));}catch(e){} });
   });
+  var btn=document.getElementById('cookBtn');
+  if(btn) btn.addEventListener('click',function(){ document.body.classList.toggle('cook'); btn.textContent=document.body.classList.contains('cook')?'一般模式':'下廚模式'; });
+  window.addEventListener('beforeprint',function(){accs.forEach(function(d){d.dataset.po=d.open?'1':'0';d.open=true;});});
+  window.addEventListener('afterprint',function(){accs.forEach(function(d){d.open=d.dataset.po==='1';});});
 })();
 </script>
 </body>

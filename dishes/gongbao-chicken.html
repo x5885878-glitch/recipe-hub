@@ -21,7 +21,7 @@
   <header class="dish-header">
     <div class="eyebrow">川菜 · 熱炒</div>
     <h1 class="dish-title">宮保雞丁</h1>
-    <p class="dish-sub">Kung Pao Chicken — 荔枝口、糊辣香、雞丁滑嫩，碗芡一次到位</p>
+    <p class="dish-sub">Kung Pao Chicken — 荔枝口、糊辣香、雞丁滑嫩,碗芡一次到位</p>
     <div class="spec-row">
       <div class="spec"><span class="k">份量</span><span class="v">2 人</span></div>
       <div class="spec"><span class="k">總時間</span><span class="v">35 min</span></div>
@@ -33,121 +33,131 @@
     </div>
   </header>
 
-  <!-- 食材 -->
-  <section class="section">
-    <div class="section-h"><span class="num">A</span><h2>食材</h2></div>
+  <div class="acc-controls">
+    <button class="chip-btn" id="expandAll">展開全部</button>
+    <button class="chip-btn" id="collapseAll">收合全部</button>
+  </div>
 
-    <div class="ing-group">
-      <h3>主料</h3>
-      <ul class="ing-list">
-        <li><span class="name">雞胸肉</span><span class="note">切 1.5cm 丁</span><span class="amt">300 g</span></li>
-        <li><span class="name">乾辣椒</span><span class="note">剪段去籽</span><span class="amt">8 根</span></li>
-        <li><span class="name">花椒</span><span class="note"></span><span class="amt">1 tsp</span></li>
-        <li><span class="name">熟花生米</span><span class="note">起鍋前下</span><span class="amt">50 g</span></li>
-        <li><span class="name">蔥白</span><span class="note">切 1cm 段</span><span class="amt">3 支</span></li>
-        <li><span class="name">薑 / 蒜</span><span class="note">切末</span><span class="amt">各 1 大匙</span></li>
-      </ul>
+  <!-- A. 食材 -->
+  <details class="acc" open>
+    <summary><span class="acc-badge">A</span><span class="acc-title">食材</span><span class="acc-count"></span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <div class="ing-group">
+        <h3>主料</h3>
+        <ul class="ing-list">
+          <li><span class="name">雞胸肉</span><span class="note">切 1.5cm 丁</span><span class="amt">300 g</span></li>
+          <li><span class="name">乾辣椒</span><span class="note">剪段去籽</span><span class="amt">8 根</span></li>
+          <li><span class="name">花椒</span><span class="note"></span><span class="amt">1 tsp</span></li>
+          <li><span class="name">熟花生米</span><span class="note">起鍋前下</span><span class="amt">50 g</span></li>
+          <li><span class="name">蔥白</span><span class="note">切 1cm 段</span><span class="amt">3 支</span></li>
+          <li><span class="name">薑 / 蒜</span><span class="note">切末</span><span class="amt">各 1 大匙</span></li>
+        </ul>
+      </div>
+      <div class="ing-group">
+        <h3>醃料(上漿)</h3>
+        <ul class="ing-list">
+          <li><span class="name">醬油</span><span class="amt">1 tsp</span></li>
+          <li><span class="name">米酒</span><span class="amt">1 tsp</span></li>
+          <li><span class="name">太白粉</span><span class="amt">1 tsp</span></li>
+          <li><span class="name">蛋白</span><span class="note">少許抓勻</span><span class="amt">½ 顆</span></li>
+        </ul>
+      </div>
+      <div class="ing-group">
+        <h3>碗芡(醬汁,先調好)</h3>
+        <ul class="ing-list">
+          <li><span class="name">醬油</span><span class="amt">1 tbsp</span></li>
+          <li><span class="name">烏醋(鎮江醋)</span><span class="amt">1 tbsp</span></li>
+          <li><span class="name">糖</span><span class="amt">1 tbsp</span></li>
+          <li><span class="name">米酒</span><span class="amt">1 tsp</span></li>
+          <li><span class="name">太白粉</span><span class="amt">1 tsp</span></li>
+          <li><span class="name">水 / 高湯</span><span class="amt">2 tbsp</span></li>
+        </ul>
+      </div>
     </div>
+  </details>
 
-    <div class="ing-group">
-      <h3>醃料(上漿)</h3>
-      <ul class="ing-list">
-        <li><span class="name">醬油</span><span class="amt">1 tsp</span></li>
-        <li><span class="name">米酒</span><span class="amt">1 tsp</span></li>
-        <li><span class="name">太白粉</span><span class="amt">1 tsp</span></li>
-        <li><span class="name">蛋白</span><span class="note">少許抓勻</span><span class="amt">½ 顆</span></li>
-      </ul>
+  <!-- B. 前置 -->
+  <details class="acc" open>
+    <summary><span class="acc-badge">B</span><span class="acc-title">前置</span><span class="acc-count"></span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <ol class="steps">
+        <li class="step"><div class="step-body">
+          <div class="step-title">雞肉上漿</div>
+          <div class="step-detail">雞丁加醃料抓勻,靜置 10 分鐘讓表面形成漿膜。</div>
+          <div class="step-badges"><span class="badge time">⏱ 靜置 10 min</span></div>
+        </div></li>
+        <li class="step"><div class="step-body">
+          <div class="step-title">調好碗芡</div>
+          <div class="step-detail">所有碗芡材料攪到糖溶解、無粉粒。<b>下鍋前再攪一次</b>(太白粉會沉底)。</div>
+        </div></li>
+        <li class="step"><div class="step-body">
+          <div class="step-title">切配料</div>
+          <div class="step-detail">乾辣椒、蔥白、薑蒜全部備齊放好,炒的時候沒有時間切。</div>
+        </div></li>
+      </ol>
     </div>
+  </details>
 
-    <div class="ing-group">
-      <h3>碗芡(醬汁,先調好)</h3>
-      <ul class="ing-list">
-        <li><span class="name">醬油</span><span class="amt">1 tbsp</span></li>
-        <li><span class="name">烏醋(鎮江醋)</span><span class="amt">1 tbsp</span></li>
-        <li><span class="name">糖</span><span class="amt">1 tbsp</span></li>
-        <li><span class="name">米酒</span><span class="amt">1 tsp</span></li>
-        <li><span class="name">太白粉</span><span class="amt">1 tsp</span></li>
-        <li><span class="name">水 / 高湯</span><span class="amt">2 tbsp</span></li>
-      </ul>
+  <!-- C. 流程 -->
+  <details class="acc" open>
+    <summary><span class="acc-badge">C</span><span class="acc-title">流程</span><span class="acc-count"></span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <ol class="steps">
+        <li class="step"><div class="step-body">
+          <div class="step-title">滑炒雞丁</div>
+          <div class="step-detail">寬油溫熱(約五分熱),下雞丁快速滑散至表面變白即撈出備用。</div>
+          <div class="step-badges"><span class="badge heat">🔥 中火</span><span class="badge temp">🌡 油溫 150°C</span><span class="badge time">⏱ 40 sec</span></div>
+          <div class="step-key"><b>關鍵</b>:不要炒到全熟,八分熟撈起,回鍋再熟,才嫩。</div>
+        </div></li>
+        <li class="step"><div class="step-body">
+          <div class="step-title">爆香糊辣</div>
+          <div class="step-detail">留底油轉中小火,下乾辣椒+花椒,炒到辣椒顏色變深紅、出糊辣香。</div>
+          <div class="step-badges"><span class="badge heat">🔥 中小火</span><span class="badge time">⏱ 20 sec</span></div>
+          <div class="step-key"><b>關鍵</b>:辣椒不能炒黑發苦——聞到香、顏色轉深就下薑蒜。</div>
+        </div></li>
+        <li class="step"><div class="step-body">
+          <div class="step-title">下薑蒜蔥白</div>
+          <div class="step-detail">轉大火,下薑蒜末與蔥白爆香 10 秒。</div>
+          <div class="step-badges"><span class="badge heat">🔥 大火</span><span class="badge time">⏱ 10 sec</span></div>
+        </div></li>
+        <li class="step"><div class="step-body">
+          <div class="step-title">回鍋 + 烹芡</div>
+          <div class="step-detail">雞丁回鍋,沿鍋邊淋入<b>攪勻的碗芡</b>,快速翻炒至醬汁裹勻、收亮。</div>
+          <div class="step-badges"><span class="badge heat">🔥 大火</span><span class="badge time">⏱ 30 sec</span></div>
+          <div class="step-key"><b>關鍵</b>:碗芡一次倒入、快速翻動,芡裹住料就起鍋,久煮會糊。</div>
+        </div></li>
+        <li class="step"><div class="step-body">
+          <div class="step-title">下花生起鍋</div>
+          <div class="step-detail">熄火,拌入花生米(保持脆),裝盤。</div>
+        </div></li>
+      </ol>
     </div>
-  </section>
-
-  <!-- 前置 -->
-  <section class="section">
-    <div class="section-h"><span class="num">B</span><h2>前置(可提前備好)</h2></div>
-    <ol class="steps">
-      <li class="step"><div class="step-body">
-        <div class="step-title">雞肉上漿</div>
-        <div class="step-detail">雞丁加醃料抓勻,靜置 10 分鐘讓表面形成漿膜。</div>
-        <div class="step-badges"><span class="badge time">⏱ 靜置 10 min</span></div>
-      </div></li>
-      <li class="step"><div class="step-body">
-        <div class="step-title">調好碗芡</div>
-        <div class="step-detail">所有碗芡材料攪到糖溶解、無粉粒。<b>下鍋前再攪一次</b>(太白粉會沉底)。</div>
-      </div></li>
-      <li class="step"><div class="step-body">
-        <div class="step-title">切配料</div>
-        <div class="step-detail">乾辣椒、蔥白、薑蒜全部備齊放好,炒的時候沒有時間切。</div>
-      </div></li>
-    </ol>
-  </section>
-
-  <!-- 流程 -->
-  <section class="section">
-    <div class="section-h"><span class="num">C</span><h2>流程</h2></div>
-    <ol class="steps">
-      <li class="step"><div class="step-body">
-        <div class="step-title">滑炒雞丁</div>
-        <div class="step-detail">寬油溫熱(約五分熱),下雞丁快速滑散至表面變白即撈出備用。</div>
-        <div class="step-badges"><span class="badge heat">🔥 中火</span><span class="badge temp">🌡 油溫 150°C</span><span class="badge time">⏱ 40 sec</span></div>
-        <div class="step-key"><b>關鍵</b>:不要炒到全熟,八分熟撈起,回鍋再熟,才嫩。</div>
-      </div></li>
-      <li class="step"><div class="step-body">
-        <div class="step-title">爆香糊辣</div>
-        <div class="step-detail">留底油轉中小火,下乾辣椒+花椒,炒到辣椒顏色變深紅、出糊辣香。</div>
-        <div class="step-badges"><span class="badge heat">🔥 中小火</span><span class="badge time">⏱ 20 sec</span></div>
-        <div class="step-key"><b>關鍵</b>:辣椒不能炒黑發苦——聞到香、顏色轉深就下薑蒜。</div>
-      </div></li>
-      <li class="step"><div class="step-body">
-        <div class="step-title">下薑蒜蔥白</div>
-        <div class="step-detail">轉大火,下薑蒜末與蔥白爆香 10 秒。</div>
-        <div class="step-badges"><span class="badge heat">🔥 大火</span><span class="badge time">⏱ 10 sec</span></div>
-      </div></li>
-      <li class="step"><div class="step-body">
-        <div class="step-title">回鍋 + 烹芡</div>
-        <div class="step-detail">雞丁回鍋,沿鍋邊淋入<b>攪勻的碗芡</b>,快速翻炒至醬汁裹勻、收亮。</div>
-        <div class="step-badges"><span class="badge heat">🔥 大火</span><span class="badge time">⏱ 30 sec</span></div>
-        <div class="step-key"><b>關鍵</b>:碗芡一次倒入、快速翻動,芡裹住料就起鍋,久煮會糊。</div>
-      </div></li>
-      <li class="step"><div class="step-body">
-        <div class="step-title">下花生起鍋</div>
-        <div class="step-detail">熄火,拌入花生米(保持脆),裝盤。</div>
-      </div></li>
-    </ol>
-  </section>
+  </details>
 
   <!-- 標準化指標 -->
-  <section class="section">
-    <div class="standard">
-      <h2>標準化指標</h2>
-      <dl>
+  <details class="acc acc--key" open>
+    <summary><span class="acc-badge">★</span><span class="acc-title">標準化指標</span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <dl class="std-dl">
         <div><dt>熟度基準</dt><dd>雞丁中心無血水、口感滑嫩不柴(過熟即失敗)。</dd></div>
         <div><dt>鹹度 / 味型</dt><dd>荔枝口:甜酸打底、鹹味收尾、糊辣香為魂。碗芡已含全部鹹度,起鍋不再補鹽。</dd></div>
         <div><dt>芡相</dt><dd>醬汁亮、薄薄裹住每顆雞丁,盤底不應積一灘水。</dd></div>
         <div><dt>成敗判定</dt><dd>花生脆、雞丁嫩、不見明顯油水分離 = 達標。</dd></div>
       </dl>
     </div>
-  </section>
+  </details>
 
-  <!-- 備註 -->
-  <section class="section">
-    <div class="section-h"><span class="num">D</span><h2>備註 &amp; 變化</h2></div>
-    <ul class="note-list">
-      <li>不吃辣:乾辣椒減半、去全部籽,改走「煳香」不走「辣」。</li>
-      <li>家用爐火力不足:雞丁分兩批滑炒,避免下鍋降溫出水。</li>
-      <li>進階:花生改現炸或烤過,香氣明顯提升。</li>
-    </ul>
-  </section>
+  <!-- D. 備註 -->
+  <details class="acc">
+    <summary><span class="acc-badge">D</span><span class="acc-title">備註 &amp; 變化</span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <ul class="note-list">
+        <li>不吃辣:乾辣椒減半、去全部籽,改走「煳香」不走「辣」。</li>
+        <li>家用爐火力不足:雞丁分兩批滑炒,避免下鍋降溫出水。</li>
+        <li>進階:花生改現炸或烤過,香氣明顯提升。</li>
+      </ul>
+    </div>
+  </details>
 
   <footer class="foot">
     <div>廚房作戰手冊 · 單菜頁 · <a href="../index.html">回統一入口</a></div>
@@ -158,25 +168,55 @@
 
 <script>
 (function(){
-  // 步驟點擊打勾(用 localStorage 記住進度;失敗則僅本次有效)
-  var key = 'done:' + (document.body.dataset.dish || location.pathname);
-  var done = {};
-  try { done = JSON.parse(localStorage.getItem(key) || '{}'); } catch(e){}
-  var steps = document.querySelectorAll('.step');
-  steps.forEach(function(el, i){
-    if (done[i]) el.classList.add('done');
-    el.addEventListener('click', function(){
-      el.classList.toggle('done');
-      done[i] = el.classList.contains('done');
-      try { localStorage.setItem(key, JSON.stringify(done)); } catch(e){}
+  var page = document.body.dataset.dish || location.pathname;
+
+  // 手風琴:狀態記憶 + 計數 + 展開/收合全部
+  var accs = Array.prototype.slice.call(document.querySelectorAll('details.acc'));
+  var akey = 'acc:' + page, astate = {};
+  try { astate = JSON.parse(localStorage.getItem(akey) || '{}'); } catch(e){}
+  accs.forEach(function(d, i){
+    if (astate.hasOwnProperty(i)) d.open = astate[i];
+    var cnt = d.querySelector('.acc-count');
+    if (cnt) {
+      var steps = d.querySelectorAll('.step');
+      var ings = d.querySelectorAll('.ing-list li');
+      if (steps.length) cnt.textContent = steps.length + ' 步';
+      else if (ings.length) cnt.textContent = ings.length + ' 項';
+    }
+    d.addEventListener('toggle', function(){
+      astate[i] = d.open;
+      try { localStorage.setItem(akey, JSON.stringify(astate)); } catch(e){}
     });
   });
-  // 下廚模式:放大字體
+  function setAll(open){
+    accs.forEach(function(d, i){ d.open = open; astate[i] = open; });
+    try { localStorage.setItem(akey, JSON.stringify(astate)); } catch(e){}
+  }
+  var bE = document.getElementById('expandAll'), bC = document.getElementById('collapseAll');
+  if (bE) bE.addEventListener('click', function(){ setAll(true); });
+  if (bC) bC.addEventListener('click', function(){ setAll(false); });
+
+  // 步驟打勾
+  var dkey = 'done:' + page, done = {};
+  try { done = JSON.parse(localStorage.getItem(dkey) || '{}'); } catch(e){}
+  document.querySelectorAll('.step').forEach(function(el, i){
+    if (done[i]) el.classList.add('done');
+    el.addEventListener('click', function(){
+      el.classList.toggle('done'); done[i] = el.classList.contains('done');
+      try { localStorage.setItem(dkey, JSON.stringify(done)); } catch(e){}
+    });
+  });
+
+  // 下廚模式
   var btn = document.getElementById('cookBtn');
-  btn.addEventListener('click', function(){
+  if (btn) btn.addEventListener('click', function(){
     document.body.classList.toggle('cook');
     btn.textContent = document.body.classList.contains('cook') ? '一般模式' : '下廚模式';
   });
+
+  // 列印前全部展開
+  window.addEventListener('beforeprint', function(){ accs.forEach(function(d){ d.dataset.po = d.open ? '1':'0'; d.open = true; }); });
+  window.addEventListener('afterprint', function(){ accs.forEach(function(d){ d.open = d.dataset.po === '1'; }); });
 })();
 </script>
 </body>

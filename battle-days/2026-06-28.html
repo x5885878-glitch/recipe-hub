@@ -6,7 +6,6 @@
 <title>週末雙人晚餐 · 戰鬥日 · 廚房作戰手冊</title>
 <link rel="stylesheet" href="../assets/style.css">
 <style>
-  /* 本戰鬥日的餐點配色 */
   .d-gong { --c: #DC5A1E; }
   .d-soup { --c: #1C5763; }
   .tl-item .tl-card { border-left-color: var(--c); }
@@ -40,96 +39,106 @@
     </div>
   </header>
 
-  <section class="section">
-    <div class="section-h"><span class="num">▦</span><h2>作戰時間軸</h2></div>
+  <div class="acc-controls">
+    <button class="chip-btn" id="expandAll">展開全部</button>
+    <button class="chip-btn" id="collapseAll">收合全部</button>
+  </div>
 
-    <div class="rail">
+  <!-- 作戰時間軸 -->
+  <details class="acc" open>
+    <summary><span class="acc-badge">▦</span><span class="acc-title">作戰時間軸</span><span class="acc-count"></span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <div class="rail">
 
-      <div class="tl-item d-soup">
-        <div class="tl-time">18:30<small>T-30</small></div>
-        <span class="tl-dot"></span>
-        <div class="tl-card">
-          <div class="tl-meta"><span class="tl-dish">番茄蛋花湯</span><span class="tl-phase">備料</span></div>
-          <div class="tl-action">切番茄、打蛋、備蔥花</div>
-          <div class="tl-ref">對標:番茄蛋花湯 → 食材備料</div>
+        <div class="tl-item d-soup">
+          <div class="tl-time">18:30<small>T-30</small></div>
+          <span class="tl-dot"></span>
+          <div class="tl-card">
+            <div class="tl-meta"><span class="tl-dish">番茄蛋花湯</span><span class="tl-phase">備料</span></div>
+            <div class="tl-action">切番茄、打蛋、備蔥花</div>
+            <div class="tl-ref">對標:番茄蛋花湯 → 食材備料</div>
+          </div>
         </div>
-      </div>
 
-      <div class="tl-item d-soup">
-        <div class="tl-time">18:35<small>T-25</small></div>
-        <span class="tl-dot"></span>
-        <div class="tl-card">
-          <div class="tl-meta"><span class="tl-dish">番茄蛋花湯</span><span class="tl-phase">烹煮</span></div>
-          <div class="tl-action">炒香番茄 → 加水煮滾 → 轉小火保溫</div>
-          <div class="tl-ref">對標:番茄蛋花湯 → 流程 1–2</div>
-          <div class="step-badges"><span class="badge heat">🔥 中火</span><span class="badge time">⏱ 8 min</span></div>
+        <div class="tl-item d-soup">
+          <div class="tl-time">18:35<small>T-25</small></div>
+          <span class="tl-dot"></span>
+          <div class="tl-card">
+            <div class="tl-meta"><span class="tl-dish">番茄蛋花湯</span><span class="tl-phase">烹煮</span></div>
+            <div class="tl-action">炒香番茄 → 加水煮滾 → 轉小火保溫</div>
+            <div class="tl-ref">對標:番茄蛋花湯 → 流程 1–2</div>
+            <div class="step-badges"><span class="badge heat">🔥 中火</span><span class="badge time">⏱ 8 min</span></div>
+          </div>
         </div>
-      </div>
 
-      <div class="tl-item d-gong">
-        <div class="tl-time">18:40<small>T-20</small></div>
-        <span class="tl-dot"></span>
-        <div class="tl-card">
-          <div class="tl-meta"><span class="tl-dish">宮保雞丁</span><span class="tl-phase">備料</span></div>
-          <div class="tl-action">雞肉上漿(靜置 10 分)、調好碗芡、切齊配料</div>
-          <div class="tl-ref">對標:宮保雞丁 → 前置 1–3</div>
-          <div class="step-badges"><span class="badge time">⏱ 靜置 10 min</span></div>
+        <div class="tl-item d-gong">
+          <div class="tl-time">18:40<small>T-20</small></div>
+          <span class="tl-dot"></span>
+          <div class="tl-card">
+            <div class="tl-meta"><span class="tl-dish">宮保雞丁</span><span class="tl-phase">備料</span></div>
+            <div class="tl-action">雞肉上漿(靜置 10 分)、調好碗芡、切齊配料</div>
+            <div class="tl-ref">對標:宮保雞丁 → 前置 1–3</div>
+            <div class="step-badges"><span class="badge time">⏱ 靜置 10 min</span></div>
+          </div>
         </div>
-      </div>
 
-      <div class="tl-item d-gong">
-        <div class="tl-time">18:52<small>T-8</small></div>
-        <span class="tl-dot"></span>
-        <div class="tl-card">
-          <div class="tl-meta"><span class="tl-dish">宮保雞丁</span><span class="tl-phase">烹煮</span></div>
-          <div class="tl-action">滑炒雞丁至八分熟,撈起備用</div>
-          <div class="tl-ref">對標:宮保雞丁 → 流程 1</div>
-          <div class="step-badges"><span class="badge heat">🔥 中火</span><span class="badge temp">🌡 150°C</span></div>
+        <div class="tl-item d-gong">
+          <div class="tl-time">18:52<small>T-8</small></div>
+          <span class="tl-dot"></span>
+          <div class="tl-card">
+            <div class="tl-meta"><span class="tl-dish">宮保雞丁</span><span class="tl-phase">烹煮</span></div>
+            <div class="tl-action">滑炒雞丁至八分熟,撈起備用</div>
+            <div class="tl-ref">對標:宮保雞丁 → 流程 1</div>
+            <div class="step-badges"><span class="badge heat">🔥 中火</span><span class="badge temp">🌡 150°C</span></div>
+          </div>
         </div>
-      </div>
 
-      <div class="tl-item d-gong">
-        <div class="tl-time">18:55<small>T-5</small></div>
-        <span class="tl-dot"></span>
-        <div class="tl-card">
-          <div class="tl-meta"><span class="tl-dish">宮保雞丁</span><span class="tl-phase">烹煮</span></div>
-          <div class="tl-action">爆糊辣 → 薑蒜蔥白 → 回鍋烹芡 → 下花生起鍋</div>
-          <div class="tl-ref">對標:宮保雞丁 → 流程 2–5</div>
-          <div class="step-badges"><span class="badge heat">🔥 大火</span><span class="badge time">⏱ 90 sec</span></div>
+        <div class="tl-item d-gong">
+          <div class="tl-time">18:55<small>T-5</small></div>
+          <span class="tl-dot"></span>
+          <div class="tl-card">
+            <div class="tl-meta"><span class="tl-dish">宮保雞丁</span><span class="tl-phase">烹煮</span></div>
+            <div class="tl-action">爆糊辣 → 薑蒜蔥白 → 回鍋烹芡 → 下花生起鍋</div>
+            <div class="tl-ref">對標:宮保雞丁 → 流程 2–5</div>
+            <div class="step-badges"><span class="badge heat">🔥 大火</span><span class="badge time">⏱ 90 sec</span></div>
+          </div>
         </div>
-      </div>
 
-      <div class="tl-item d-soup">
-        <div class="tl-time">18:58<small>T-2</small></div>
-        <span class="tl-dot"></span>
-        <div class="tl-card">
-          <div class="tl-meta"><span class="tl-dish">番茄蛋花湯</span><span class="tl-phase">收尾</span></div>
-          <div class="tl-action">湯回滾 → 勾薄芡 → 淋蛋花 → 撒蔥花起鍋</div>
-          <div class="tl-ref">對標:番茄蛋花湯 → 流程 3–4</div>
-          <div class="step-badges"><span class="badge heat">🔥 小火</span></div>
+        <div class="tl-item d-soup">
+          <div class="tl-time">18:58<small>T-2</small></div>
+          <span class="tl-dot"></span>
+          <div class="tl-card">
+            <div class="tl-meta"><span class="tl-dish">番茄蛋花湯</span><span class="tl-phase">收尾</span></div>
+            <div class="tl-action">湯回滾 → 勾薄芡 → 淋蛋花 → 撒蔥花起鍋</div>
+            <div class="tl-ref">對標:番茄蛋花湯 → 流程 3–4</div>
+            <div class="step-badges"><span class="badge heat">🔥 小火</span></div>
+          </div>
         </div>
-      </div>
 
-      <div class="tl-item" style="--c:#4E6B52">
-        <div class="tl-time">19:00<small>T-0</small></div>
-        <span class="tl-dot"></span>
-        <div class="tl-card">
-          <div class="tl-meta"><span class="tl-dish" style="color:#4E6B52">上菜</span></div>
-          <div class="tl-action">兩菜同時熱上桌 🍽</div>
+        <div class="tl-item" style="--c:#4E6B52">
+          <div class="tl-time">19:00<small>T-0</small></div>
+          <span class="tl-dot"></span>
+          <div class="tl-card">
+            <div class="tl-meta"><span class="tl-dish" style="color:#4E6B52">上菜</span></div>
+            <div class="tl-action">兩菜同時熱上桌 🍽</div>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
-  </section>
+  </details>
 
-  <section class="section">
-    <div class="section-h"><span class="num">✓</span><h2>戰前檢查</h2></div>
-    <ul class="note-list">
-      <li>碗芡、醃料、太白粉水<b>全部先調好</b>放小碗備用——開火後沒空調。</li>
-      <li>湯保溫期間別蓋死,微開蓋免噗鍋;蛋花務必上菜前才下。</li>
-      <li>炒鍋與湯鍋分開,互不搶爐口。</li>
-    </ul>
-  </section>
+  <!-- 戰前檢查 -->
+  <details class="acc" open>
+    <summary><span class="acc-badge">✓</span><span class="acc-title">戰前檢查</span><span class="acc-chev">▾</span></summary>
+    <div class="acc-body">
+      <ul class="note-list">
+        <li>碗芡、醃料、太白粉水<b>全部先調好</b>放小碗備用——開火後沒空調。</li>
+        <li>湯保溫期間別蓋死,微開蓋免噗鍋;蛋花務必上菜前才下。</li>
+        <li>炒鍋與湯鍋分開,互不搶爐口。</li>
+      </ul>
+    </div>
+  </details>
 
   <footer class="foot">
     <div>廚房作戰手冊 · 戰鬥日 · <a href="../index.html">回統一入口</a></div>
@@ -139,22 +148,43 @@
 <button class="cookmode-btn" id="cookBtn">下廚模式</button>
 <script>
 (function(){
-  var key = 'done:' + (document.body.dataset.dish || location.pathname);
-  var done = {};
-  try { done = JSON.parse(localStorage.getItem(key) || '{}'); } catch(e){}
-  document.querySelectorAll('.tl-card').forEach(function(el, i){
-    if (done[i]) el.classList.add('done');
-    el.addEventListener('click', function(){
-      el.classList.toggle('done');
-      done[i] = el.classList.contains('done');
-      try { localStorage.setItem(key, JSON.stringify(done)); } catch(e){}
+  var page = document.body.dataset.dish || location.pathname;
+  var accs = Array.prototype.slice.call(document.querySelectorAll('details.acc'));
+  var akey = 'acc:' + page, astate = {};
+  try { astate = JSON.parse(localStorage.getItem(akey) || '{}'); } catch(e){}
+  accs.forEach(function(d, i){
+    if (astate.hasOwnProperty(i)) d.open = astate[i];
+    var cnt = d.querySelector('.acc-count');
+    if (cnt) {
+      var cards = d.querySelectorAll('.tl-card');
+      if (cards.length) cnt.textContent = cards.length + ' 段';
+    }
+    d.addEventListener('toggle', function(){
+      astate[i] = d.open;
+      try { localStorage.setItem(akey, JSON.stringify(astate)); } catch(e){}
     });
   });
-  var btn = document.getElementById('cookBtn');
-  btn.addEventListener('click', function(){
-    document.body.classList.toggle('cook');
-    btn.textContent = document.body.classList.contains('cook') ? '一般模式' : '下廚模式';
+  function setAll(open){ accs.forEach(function(d,i){ d.open=open; astate[i]=open; }); try{localStorage.setItem(akey,JSON.stringify(astate));}catch(e){} }
+  var bE=document.getElementById('expandAll'), bC=document.getElementById('collapseAll');
+  if(bE) bE.addEventListener('click',function(){setAll(true);});
+  if(bC) bC.addEventListener('click',function(){setAll(false);});
+
+  var dkey='done:'+page, done={};
+  try{done=JSON.parse(localStorage.getItem(dkey)||'{}');}catch(e){}
+  document.querySelectorAll('.tl-card').forEach(function(el,i){
+    if(done[i]) el.classList.add('done');
+    el.addEventListener('click',function(){
+      el.classList.toggle('done'); done[i]=el.classList.contains('done');
+      try{localStorage.setItem(dkey,JSON.stringify(done));}catch(e){}
+    });
   });
+  var btn=document.getElementById('cookBtn');
+  if(btn) btn.addEventListener('click',function(){
+    document.body.classList.toggle('cook');
+    btn.textContent=document.body.classList.contains('cook')?'一般模式':'下廚模式';
+  });
+  window.addEventListener('beforeprint',function(){accs.forEach(function(d){d.dataset.po=d.open?'1':'0';d.open=true;});});
+  window.addEventListener('afterprint',function(){accs.forEach(function(d){d.open=d.dataset.po==='1';});});
 })();
 </script>
 </body>

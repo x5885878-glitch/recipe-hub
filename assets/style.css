@@ -326,3 +326,59 @@ body.cook .tl-action { font-size: 1.25rem; }
   .standard { background: #fff; color: #000; border: 1.5px solid #000; }
   .standard h2, .standard dd { color: #000; }
 }
+
+/* =========================================================================
+   手風琴(互動式收摺)— v2
+   ========================================================================= */
+.acc-controls { display: flex; gap: 8px; margin: 4px 0 18px; }
+.chip-btn {
+  font-family: var(--body); font-size: .88rem; padding: 7px 15px; border-radius: 999px;
+  border: 1px solid var(--line-2); background: var(--card); color: var(--steel); cursor: pointer;
+  transition: border-color .12s, background .12s;
+}
+.chip-btn:hover { border-color: var(--steel); background: #fff; }
+
+details.acc {
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--card);
+  margin-bottom: 14px; box-shadow: var(--shadow); overflow: hidden;
+}
+details.acc > summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; gap: 13px;
+  padding: 15px 18px; user-select: none;
+}
+details.acc > summary::-webkit-details-marker { display: none; }
+details.acc > summary:hover { background: rgba(18,59,68,.035); }
+.acc-badge {
+  font-family: var(--mono); font-weight: 700; font-size: 1rem; color: #fff; background: var(--steel);
+  width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex: none;
+}
+.acc-title { font-family: var(--display); font-weight: 700; font-size: 1.3rem; line-height: 1.1; }
+.acc-count { font-family: var(--mono); font-size: .8rem; color: var(--ink-soft); }
+.acc-chev { margin-left: auto; font-size: 1.05rem; color: var(--steel); transition: transform .2s; }
+details.acc[open] > summary .acc-chev { transform: rotate(180deg); }
+.acc-body { padding: 2px 18px 18px; }
+details.acc[open] > .acc-body { animation: accIn .18s ease; }
+@keyframes accIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: none; } }
+
+/* 收摺內的步驟卡降低層次,避免「卡中卡」 */
+details.acc .step { box-shadow: none; }
+
+/* 標準化指標:重點款,summary 用鋼藍強調 */
+.acc--key > summary { background: var(--steel); }
+.acc--key > summary:hover { background: #0f343c; }
+.acc--key > summary .acc-title { color: #fff; }
+.acc--key > summary .acc-badge { background: #fff; color: var(--steel); }
+.acc--key > summary .acc-chev { color: #cfe0e2; }
+.std-dl { margin: 0; display: grid; gap: 14px; }
+.std-dl dt { font-family: var(--mono); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ember); margin-bottom: 3px; }
+.std-dl dd { margin: 0; color: var(--ink); }
+
+@media (max-width: 560px) {
+  .acc-title { font-size: 1.15rem; }
+  .acc-badge { width: 30px; height: 30px; }
+}
+@media print {
+  .acc-controls, .acc-chev { display: none !important; }
+  details.acc { box-shadow: none; break-inside: avoid; }
+  details.acc > summary { background: #f0ede7 !important; }
+}
